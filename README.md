@@ -15,6 +15,21 @@ Shell script to build out Craft install quickly. This is a geekier, more technic
 4. Run makeItCraft `~/makeItCraft.sh`
 5. Profit
 
+## One-off Instructions
+If you're a clever clogs, you could download, run, and then throw out makeItCraft directly in a single command:
+
+```bash
+\curl -sSL https://raw.githubusercontent.com/mattstauffer/makeItCraft/master/makeItCraft.sh | bash -s stable
+```
+
+You could even edit your `.bash_profile` or `.zshrc` to make this a powerful and simple shortcut:
+
+```bash
+alias makeItCraft="\curl -sSL https://raw.githubusercontent.com/mattstauffer/makeItCraft/master/makeItCraft.sh | bash -s stable"
+```
+
+Now you can just run `makeItCraft` anywhere on your command line. (Be sure to close and reopen your terminal first).
+
 ## GIF
 
 ![Animation showing installation process](https://raw.githubusercontent.com/mattstauffer/makeItCraft/master/make-it-craft.gif)

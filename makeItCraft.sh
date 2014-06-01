@@ -32,7 +32,9 @@ function coloredEcho(){
 
 mkdir -p tmp
 
-coloredEcho '\nDownloading and installing the latest version of Craft...\n' green
+echo ''
+coloredEcho 'Downloading and installing the latest version of Craft...' green
+echo ''
 
 curl -L http://buildwithcraft.com/latest.zip?accept_license=yes -o tmp/Craft.zip
 unzip tmp/Craft.zip
@@ -49,14 +51,18 @@ echo "  chmod $permLevel craft/storage"
 
 mv public/htaccess public/.htaccess
 echo '  mv public/htaccess public/.htaccess'
-
-echo '\n------------------\n'
-coloredEcho 'NOTE:\nSetting craft/app, craft/config, and craft/storage permissions to be 774; change to your desired permission set.\n\nSee the docs for your options: http://buildwithcraft.com/docs/installing' red
-
-echo '\nNext steps:'
+echo ''
+echo '------------------'
+echo ''
+coloredEcho 'NOTE:' red
+coloredEcho 'Setting craft/app, craft/config, and craft/storage permissions to be 774; change to your desired permission set.' red
+echo ''
+coloredEcho 'See the docs for your options: http://buildwithcraft.com/docs/installing' red
+echo ''
+echo 'Next steps:'
 echo ' - Create a database with charset `utf8` and collation `utf8_unicode_ci`'
 echo ' - Update craft/config/db.php with your database credentials'
 echo ' - Run the installer at your-domain.com/admin'
 echo " - Delete public/web.config if you're on Apache, or delete public/.htaccess if you're on IIS"
-
-echo '\nHappy Crafting!'
+echo ''
+echo 'Happy Crafting!'
