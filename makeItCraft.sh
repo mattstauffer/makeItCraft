@@ -25,7 +25,7 @@ function coloredEcho(){
 #  \ \_____\\ \_\ \_\\ \_\ \_\\ \_\     \ \_\ \ \_____\\ \_\ \ \_\\/\_____\
 #   \/_____/ \/_/ /_/ \/_/\/_/ \/_/      \/_/  \/_____/ \/_/  \/_/ \/_____/
 #
-# Installer Script v0.1
+# Installer Script v0.1.2
 # By Matt Stauffer (mattstauffer.co)
 #
 ###############################################################################
@@ -42,10 +42,21 @@ permLevel=774
 chmod $permLevel craft/app
 chmod $permLevel craft/config
 chmod $permLevel craft/storage
+echo ''
+echo "  chmod $permLevel craft/app"
+echo "  chmod $permLevel craft/config"
+echo "  chmod $permLevel craft/storage"
 
-echo '\n\n------------------\n'
+mv public/htaccess public/.htaccess
+echo '  mv public/htaccess public/.htaccess'
+
+echo '\n------------------\n'
 coloredEcho 'NOTE:\nSetting craft/app, craft/config, and craft/storage permissions to be 774; change to your desired permission set.\n\nSee the docs for your options: http://buildwithcraft.com/docs/installing' red
 
-echo '\nNext steps:\n - Update craft/config/db.php with your database credentials.\n - Create a database with charset `utf8` and collation `utf8_unicode_ci`.\n - Run the installer at your-domain.com/admin'
+echo '\nNext steps:'
+echo ' - Create a database with charset `utf8` and collation `utf8_unicode_ci`'
+echo ' - Update craft/config/db.php with your database credentials'
+echo ' - Run the installer at your-domain.com/admin'
+echo " - Delete public/web.config if you're on Apache, or delete public/.htaccess if you're on IIS"
 
 echo '\nHappy Crafting!'
