@@ -33,6 +33,15 @@ function coloredEcho(){
 mkdir -p tmp
 
 echo ''
+coloredEcho "Do you accept Craft's license? [http://buildwithcraft.com/license]"
+read -p "[yN]" -n 1 -r
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+echo ''
+
+echo ''
 coloredEcho 'Downloading and installing the latest version of Craft...' green
 echo ''
 
