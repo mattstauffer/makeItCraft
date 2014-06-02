@@ -35,30 +35,11 @@ mkdir -p tmp
 
 echo ''
 coloredEcho "Do you accept Craft's license? [http://buildwithcraft.com/license]"
-read -p "[yN]" -n 1 -r
+read -p "[y/N]" -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     exit 1
 fi
-
-### Frustrated attempts to get this to work over Curl
-# read -r -p "[y/N] " response
-# case $response in
-#     [yY][eE][sS]|[yY]) 
-#         # pass
-#         ;;
-#     *)
-#         exit 1
-#         ;;
-# esac
-# read -p 'Do you want to Continue (yes/no?): ' answer
-# if [[ $answer = "y" ]]; then
-#     echo 'AWESOME'
-# else
-#     echo 'NOPE'
-#     exit 1
-# fi
-
 echo ''
 
 echo ''
