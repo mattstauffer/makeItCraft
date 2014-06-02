@@ -7,7 +7,7 @@ Make It Craft is a command-line shell script that makes it extremely simple to g
 
  * The current version of this installer is for Apache and chmods 774. To learn more about how to make this work with non-Apache servers, or to customize your Apache settings, check out the [docs][1].
  * The current verison of this installer does not create your database or set up your hosts file. It just downloads your files and `chmods` them. The rest is up to you. 
- * 
+
 ## Instructions - local copy
 
 1. Download [makeItCraft.sh][2] and place it somewhere you can access it easily from your Terminal. Consider your home folder (`~/`)
