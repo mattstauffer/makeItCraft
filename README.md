@@ -6,7 +6,7 @@ MakeItCraft is a command-line shell script that makes it extremely simple to get
 ## Notes
 
  * The current version of this installer is for Apache and chmods 774. To learn more about how to make this work with non-Apache servers, or to customize your Apache settings, check out the [docs][1].
- * The current verison of this installer does not create your database or set up your hosts file. It just downloads your files and `chmods` them. The rest is up to you. 
+ * The current version of this installer does not create your database or set up your hosts file. It just downloads your files and `chmods` them. The rest is up to you. 
 
 ## Instructions - alias
 The easiest way to run the installer is to just create a blank directory for your new site, CD into it, and then copy the following line and run it from your terminal.
