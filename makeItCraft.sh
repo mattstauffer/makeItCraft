@@ -26,7 +26,7 @@ function coloredEcho(){
 #  \ \_____\\ \_\ \_\\ \_\ \_\\ \_\     \ \_\ \ \_____\\ \_\ \ \_\\/\_____\
 #   \/_____/ \/_/ /_/ \/_/\/_/ \/_/      \/_/  \/_____/ \/_/  \/_/ \/_____/
 #
-# Installer Script v0.1.2
+# Installer Script v0.2.0
 # By Matt Stauffer (mattstauffer.co)
 #
 ###############################################################################
@@ -68,6 +68,52 @@ coloredEcho 'NOTE:' red
 coloredEcho 'Setting craft/app, craft/config, and craft/storage permissions to be 774; change to your desired permission set.' red
 echo ''
 coloredEcho 'See the docs for your options: http://buildwithcraft.com/docs/installing' red
+
+echo ''
+coloredEcho "Do you want to use PHPDotEnv and Composer (requires globally-installed Composer)?"
+read -p "[y/N]" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    cat >composer.json <<EOL
+{
+    "require": {
+        "vlucas/phpdotenv": "^2.0"
+    }
+}
+    EOL
+    echo '  (created composer.json)'
+    cat >tmpIndexHeader <<EOL
+require_once('../vendor/autoload.php');
+
+try {
+    $dotenv = new Dotenv\Dotenv(dirname(__DIR__));
+    $dotenv->load();
+    $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
+} catch (Exception $e) {
+    exit('Could not find a .env file.');
+}
+    EOL
+    cat public/index.php >> tmpIndexHeader
+    mv tmpIndexHeader public/index.php
+    echo '  (added composer and phpdotenv loader to public/index.php)'
+    composer install
+    echo '  composer install'
+    cat >.env <<EOL
+DB_HOST=localhost
+DB_NAME=craft
+DB_USER=root
+DB_PASS=root
+    EOL
+    cp .env .env.example
+    echo '  (created .env and .env.example)'
+    touch .gitignore
+    echo '.env' >> .gitignore
+    echo '/vendor/' >> .gitignore
+    echo '  (added .env and /vendor/ to .gitignore)'
+    echo '@todo: update craft config files'
+fi
+echo ''
+
 echo ''
 echo 'Next steps:'
 echo ' - Create a database with charset `utf8` and collation `utf8_unicode_ci`'
